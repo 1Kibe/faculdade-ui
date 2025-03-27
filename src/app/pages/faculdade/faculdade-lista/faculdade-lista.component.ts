@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FaculdadeService } from '../faculdade.service';
 
 @Component({
   selector: 'app-faculdade-lista',
@@ -6,10 +7,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./faculdade-lista.component.css']
 })
 export class FaculdadeListaComponent implements OnInit {
-
-  constructor() { }
+  
+  disciplinas = [];
+  
+  constructor(
+    private faculdadeService: FaculdadeService
+  ) { }
 
   ngOnInit() {
+    this.carregarDisciplinas();
+  }
+
+  carregarDisciplinas(){
+    this.faculdadeService.listar().then((obj) => {
+      this.disciplinas = obj;
+    });
   }
 
 }
