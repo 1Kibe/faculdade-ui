@@ -11,7 +11,7 @@ export class DisciplinaService {
 
   constructor(private http: HttpClient) {
     this.disciplinaUrl =
-        'https://658b1550ba789a9622386895.mockapi.io/disciplina';
+    'https://67e4bd942ae442db76d56458.mockapi.io/disciplinas';
   }
 
   listar(): Promise<any> {

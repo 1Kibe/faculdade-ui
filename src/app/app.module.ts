@@ -5,6 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DisciplinaModule } from './pages/disciplina/disciplina.module';
+import { AlunosModule } from './pages/alunos/alunos.module';
 import { PrimengModule } from './primeng.module';
 
 @NgModule({
@@ -17,7 +18,8 @@ import { PrimengModule } from './primeng.module';
     BrowserAnimationsModule,
     AppRoutingModule,
     PrimengModule,
-    DisciplinaModule
+    DisciplinaModule,
+    AlunosModule
   ],
   providers: [
   ],
