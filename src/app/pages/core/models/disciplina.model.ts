@@ -1,9 +1,9 @@
 export class Disciplina {
-    iddiciplina?: number;
-    descrisao? :string;
+    iddisciplina?: number;
+    descricao?: string;
     status?: boolean;
     datacriacao?: Date;
-    dataalteracao?:Date;
-    usuariocriacao?:string;
-    usuarioalteracao?:string
+    dataalteracao?: Date;
+    usucriacao?: string;
+    usualteracao?: string;
 }

@@ -1,11 +1,11 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FaculdadeModule } from './pages/faculdade/faculdade.module';
+import { DisciplinaModule } from './pages/disciplina/disciplina.module';
 import { PrimengModule } from './primeng.module';
-import { HttpClientModule } from '@angular/common/http'; // Importe o HttpClientModule
 
 @NgModule({
   declarations: [
@@ -13,13 +13,14 @@ import { HttpClientModule } from '@angular/common/http'; // Importe o HttpClient
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     PrimengModule,
-    FaculdadeModule,
-    HttpClientModule // Adicione o HttpClientModule aqui
+    DisciplinaModule
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
