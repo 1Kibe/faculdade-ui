@@ -8,6 +8,7 @@ import { DisciplinaModule } from './pages/disciplina/disciplina.module';
 import { AlunosModule } from './pages/alunos/alunos.module';
 import { PrimengModule } from './primeng.module';
 import { ProfessorModule } from './pages/professor/professor.module';
+import { MessageService } from 'primeng/api';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { ProfessorModule } from './pages/professor/professor.module';
     ProfessorModule
   ],
   providers: [
+    MessageService
   ],
   bootstrap: [AppComponent]
 })

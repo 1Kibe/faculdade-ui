@@ -1,9 +1,33 @@
 <p-card header="Lista de Alunos">
-  <div class="flex flex-wrap col-12 mb-3" style="margin-bottom: 1rem;">
-    <p-button icon="pi pi-plus" routerLink="cadastro" label="Novo"></p-button>
+  <!-- Skeleton enquanto carrega -->
+  <p-skeleton *ngIf="carregando" height="2rem" class="mb-3"></p-skeleton>
+
+  <!-- Botão Novo, só aparece quando terminar de carregar -->
+  <div
+    *ngIf="!carregando"
+    class="flex flex-wrap col-12 justify-content-between align-items-center mb-3 " style="margin-bottom: 1rem;">
+    <p-button
+      icon="pi pi-plus"
+      routerLink="cadastro"
+      label="Novo"
+      [ngStyle]="{ 'margin-bottom': '1rem' }"
+      pFocusTrap
+    ></p-button>
   </div>
-  
-  <p-table [value]="alunos" styleClass="p-datatable-striped">
+
+  <!-- Tabela de alunos -->
+  <p-table
+    *ngIf="!carregando"
+    [value]="alunos"
+    [paginator]="true"
+    [rows]="5"
+    [virtualScroll]="true"
+    [rowsPerPageOptions]="[5, 10, 20]"
+    [scrollable]="true"
+    scrollHeight="400px"
+    [loading]="carregando"
+    styleClass="p-datatable-striped"
+  >
     <ng-template pTemplate="header">
       <tr>
         <th width="150px">ID</th>
@@ -11,7 +35,7 @@
         <th width="200px">CPF</th>
       </tr>
     </ng-template>
-    
+
     <ng-template pTemplate="body" let-aluno>
       <tr>
         <td>{{ aluno.idaluno }}</td>

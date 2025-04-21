@@ -1,5 +1,11 @@
+<p-toast></p-toast>
+
 <p-card header="Cadastro de Professor">
-  <div class="flex flex-wrap col-12 mb-3" style="margin-bottom: 1rem;">
+  <!-- Skeleton sempre que estiver carregando -->
+  <p-skeleton *ngIf="carregando" height="2rem" class="mb-3"></p-skeleton>
+
+  <!-- Botão voltar só quando não está carregando -->
+  <div class="flex flex-wrap col-12 mb-3" style="margin-bottom: 2rem;" *ngIf="!carregando">
     <button 
       pButton 
       type="button" 
@@ -12,33 +18,32 @@
     </button>
   </div>
 
-  <form #form="ngForm" autocomplete="off" (ngSubmit)="cadastrarProfessor(form)">
-    <div class="grid">
-      <!-- Rótulo Nome -->
-      <span class="col-12 mb-2">Nome</span>
-      <!-- Campo Nome -->
-      <div class="col-12 md:col-6 lg:col-4" style="margin-bottom: 1rem;">
-        <input 
-          pInputText 
-          name="nome" 
-          #nome="ngModel" 
-          [(ngModel)]="professor.nome" 
-          type="text" 
-          required>
-      </div>
+  <!-- Formulário só aparece quando não está carregando -->
+  <form [formGroup]="form" (ngSubmit)="salvar()" *ngIf="!carregando">
+    <div class="field mb-4" style="margin-bottom: 2rem;">
+      <span class="p-float-label">
+        <input id="nome" type="text" pInputText formControlName="nome" />
+        <label for="nome">Nome</label>
+      </span>
+    </div>
 
+    <div class="field mb-4" style="margin-bottom: 2rem;">
+      <span class="p-float-label">
+        <input id="cpf" type="text" pInputText formControlName="cpf" />
+        <label for="cpf">CPF</label>
+      </span>
+    </div>
 
-      <!-- Botão Salvar centralizado -->
-      <div class="col-12 mt-4" style="margin-bottom: 1rem;">
-        <div class="flex justify-content-center">
-          <button 
-            pButton 
-            type="submit" 
-            label="Salvar" 
-            [disabled]="form.invalid">
-          </button>
-        </div>
-      </div>
+    <div class="flex justify-content-end">
+      <p-button 
+        label="Salvar" 
+        icon="pi pi-save" 
+        type="submit" 
+        [disabled]="salvando || form.invalid" 
+        pFocusTrap>
+      </p-button>
     </div>
   </form>
 </p-card>
+
+<p-scrollTop target="window" [threshold]="300" icon="pi pi-arrow-up"></p-scrollTop>

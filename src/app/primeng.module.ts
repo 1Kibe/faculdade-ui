@@ -1,21 +1,36 @@
-
 import { NgModule } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { TableModule } from 'primeng/table';
 import { CardModule } from 'primeng/card';
 import { DropdownModule } from 'primeng/dropdown'; 
-import { CalendarModule } from 'primeng/calendar'; 
+import { CalendarModule } from 'primeng/calendar';
+import { ToastModule } from 'primeng/toast';
+import { MessagesModule } from 'primeng/messages';
+import { MessageModule } from 'primeng/message';
+import { ScrollTopModule } from 'primeng/scrolltop';
+import { SkeletonModule } from 'primeng/skeleton';
+import { MultiSelectModule } from 'primeng/multiselect';
+import { FocusTrapModule } from 'primeng/focustrap';
+import { TooltipModule } from 'primeng/tooltip';
+
 
 @NgModule({
-
   exports: [
     ButtonModule,
     InputTextModule,
     TableModule,
     CardModule,
     DropdownModule,
-    CalendarModule 
+    CalendarModule,
+    ToastModule,
+    MessagesModule,
+    MessageModule,
+    ScrollTopModule,
+    SkeletonModule,
+    MultiSelectModule,
+    FocusTrapModule,
+    TooltipModule
   ]
 })
 export class PrimengModule { }

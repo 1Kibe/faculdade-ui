@@ -5,13 +5,15 @@ import { ProfessorListaComponent } from './professor-lista/professor-lista.compo
 import { FormsModule } from '@angular/forms';
 import { ProfessorRoutingModule } from './professor.routing';
 import { PrimengModule } from 'src/app/primeng.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     ProfessorRoutingModule,
-    PrimengModule
+    PrimengModule,
+    ReactiveFormsModule
   ],
   declarations: [
     ProfessorCadastroComponent,

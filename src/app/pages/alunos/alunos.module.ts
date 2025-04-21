@@ -5,13 +5,15 @@ import { AlunosCadastroComponent } from './alunos-cadastro/alunos-cadastro.compo
 import { AlunosRoutingModule } from './alunos.routing';
 import { PrimengModule } from 'src/app/primeng.module';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
     AlunosRoutingModule,
     PrimengModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   declarations: [
     AlunosListaComponent,
