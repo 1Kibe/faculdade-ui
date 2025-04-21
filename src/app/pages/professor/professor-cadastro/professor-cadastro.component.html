@@ -1,3 +1,44 @@
-<p>
-  professor-cadastro works!
-</p>
+<p-card header="Cadastro de Professor">
+  <div class="flex flex-wrap col-12 mb-3" style="margin-bottom: 1rem;">
+    <button 
+      pButton 
+      type="button" 
+      class="p-button p-button-raised" 
+      icon="pi pi-caret-left" 
+      pTooltip="Voltar" 
+      tooltipPosition="top" 
+      label="Voltar" 
+      routerLink="/professores">
+    </button>
+  </div>
+
+  <form #form="ngForm" autocomplete="off" (ngSubmit)="cadastrarProfessor(form)">
+    <div class="grid">
+      <!-- Rótulo Nome -->
+      <span class="col-12 mb-2">Nome</span>
+      <!-- Campo Nome -->
+      <div class="col-12 md:col-6 lg:col-4" style="margin-bottom: 1rem;">
+        <input 
+          pInputText 
+          name="nome" 
+          #nome="ngModel" 
+          [(ngModel)]="professor.nome" 
+          type="text" 
+          required>
+      </div>
+
+
+      <!-- Botão Salvar centralizado -->
+      <div class="col-12 mt-4" style="margin-bottom: 1rem;">
+        <div class="flex justify-content-center">
+          <button 
+            pButton 
+            type="submit" 
+            label="Salvar" 
+            [disabled]="form.invalid">
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</p-card>

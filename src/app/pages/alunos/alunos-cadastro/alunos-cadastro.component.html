@@ -1,5 +1,5 @@
 <p-card header="Cadastro de Aluno">
-  <div class="flex flex-wrap col-12 mb-3">
+  <div class="flex flex-wrap col-12 mb-3" style="margin-bottom: 1rem;">
     <button 
       pButton 
       type="button" 
@@ -14,8 +14,10 @@
 
   <form #form="ngForm" autocomplete="off" (ngSubmit)="cadastrarAluno(form)">
     <div class="grid">
-      <span class="col-12 -mb-3">Nome</span>
-      <div class="col-12 md:col-6 lg:col-4">
+      <!-- Rótulo Nome -->
+      <span class="col-12 mb-2">Nome</span>
+      <!-- Campo Nome -->
+      <div class="col-12 md:col-6 lg:col-4" style="margin-bottom: 1rem;">
         <input 
           pInputText 
           name="nome" 
@@ -25,8 +27,10 @@
           required>
       </div>
 
-      <span class="col-12 -mb-3">CPF</span>
-      <div class="col-12 md:col-6 lg:col-4">
+      <!-- Rótulo CPF -->
+      <span class="col-12 mb-2">CPF</span>
+      <!-- Campo CPF -->
+      <div class="col-12 md:col-6 lg:col-4" style="margin-bottom: 1rem;">
         <input 
           pInputText 
           name="cpf" 
@@ -36,13 +40,16 @@
           required>
       </div>
 
-      <div class="col-12 mt-4">
-        <button 
-          pButton 
-          type="submit" 
-          label="Salvar" 
-          [disabled]="form.invalid">
-        </button>
+      <!-- Botão Salvar centralizado -->
+      <div class="col-12 mt-4" style="margin-bottom: 1rem;">
+        <div class="flex justify-content-center">
+          <button 
+            pButton 
+            type="submit" 
+            label="Salvar" 
+            [disabled]="form.invalid">
+          </button>
+        </div>
       </div>
     </div>
   </form>

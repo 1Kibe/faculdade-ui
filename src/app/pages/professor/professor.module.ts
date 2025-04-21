@@ -4,12 +4,14 @@ import { ProfessorCadastroComponent } from './professor-cadastro/professor-cadas
 import { ProfessorListaComponent } from './professor-lista/professor-lista.component';
 import { FormsModule } from '@angular/forms';
 import { ProfessorRoutingModule } from './professor.routing';
+import { PrimengModule } from 'src/app/primeng.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    ProfessorRoutingModule
+    ProfessorRoutingModule,
+    PrimengModule
   ],
   declarations: [
     ProfessorCadastroComponent,

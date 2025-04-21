@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { DisciplinaModule } from './pages/disciplina/disciplina.module';
 import { AlunosModule } from './pages/alunos/alunos.module';
 import { PrimengModule } from './primeng.module';
+import { ProfessorModule } from './pages/professor/professor.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { PrimengModule } from './primeng.module';
     AppRoutingModule,
     PrimengModule,
     DisciplinaModule,
-    AlunosModule
+    AlunosModule,
+    ProfessorModule
   ],
   providers: [
   ],

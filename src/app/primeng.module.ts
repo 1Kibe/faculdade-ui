@@ -3,7 +3,9 @@ import { NgModule } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { TableModule } from 'primeng/table';
-import { CardModule } from 'primeng/card'; 
+import { CardModule } from 'primeng/card';
+import { DropdownModule } from 'primeng/dropdown'; 
+import { CalendarModule } from 'primeng/calendar'; 
 
 @NgModule({
 
@@ -11,7 +13,9 @@ import { CardModule } from 'primeng/card';
     ButtonModule,
     InputTextModule,
     TableModule,
-    CardModule 
+    CardModule,
+    DropdownModule,
+    CalendarModule 
   ]
 })
 export class PrimengModule { }
