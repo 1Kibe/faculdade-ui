@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Message } from 'primeng/api';
 import { Professor } from '../../core/models/professor.model';
-import { DATA } from 'src/app/pages/professor/data';
+import { ProfessorService } from '../professor.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-professor-lista',
@@ -10,15 +11,25 @@ import { DATA } from 'src/app/pages/professor/data';
 })
 export class ProfessorListaComponent implements OnInit {
   professores: Professor[] = [];
-  loading: boolean = true;
   msgs: Message[] = [];
 
-  ngOnInit(): void {
-    // Simula carregamento de dados
-    setTimeout(() => {
-      this.professores = DATA;
+  constructor(
+    private professorService: ProfessorService,
+    private spinner: NgxSpinnerService
+  ) {}
 
-      this.loading = false;
-    }, 1500);
+  ngOnInit(): void {
+    this.spinner.show(); // Mostra o spinner global
+
+    this.professorService.listar()
+      .then(data => {
+        this.professores = data;
+      })
+      .catch(() => {
+        this.msgs.push({ severity: 'error', summary: 'Erro', detail: 'Erro ao carregar professores' });
+      })
+      .finally(() => {
+        this.spinner.hide(); // Esconde o spinner
+      });
   }
 }

@@ -1,11 +1,7 @@
 <p-toast></p-toast>
 
 <p-card header="Cadastro de Professor">
-  <!-- Skeleton sempre que estiver carregando -->
-  <p-skeleton *ngIf="carregando" height="2rem" class="mb-3"></p-skeleton>
-
-  <!-- Botão voltar só quando não está carregando -->
-  <div class="flex flex-wrap col-12 mb-3" style="margin-bottom: 2rem;" *ngIf="!carregando">
+  <div class="flex flex-wrap col-12 mb-3" style="margin-bottom: 2rem;">
     <button 
       pButton 
       type="button" 
@@ -18,9 +14,8 @@
     </button>
   </div>
 
-  <!-- Formulário só aparece quando não está carregando -->
-  <form [formGroup]="form" (ngSubmit)="salvar()" *ngIf="!carregando">
-    <div class="field mb-4" style="margin-bottom: 2rem;">
+  <form [formGroup]="form" (ngSubmit)="salvar()">
+    <div class="field mb-4"style="margin-bottom: 2rem;">
       <span class="p-float-label">
         <input id="nome" type="text" pInputText formControlName="nome" />
         <label for="nome">Nome</label>
@@ -34,12 +29,12 @@
       </span>
     </div>
 
-    <div class="flex justify-content-end">
+    <div class="flex justify-content-end" style="margin-bottom: 2rem;">
       <p-button 
         label="Salvar" 
         icon="pi pi-save" 
         type="submit" 
-        [disabled]="salvando || form.invalid" 
+        [disabled]="form.invalid" 
         pFocusTrap>
       </p-button>
     </div>

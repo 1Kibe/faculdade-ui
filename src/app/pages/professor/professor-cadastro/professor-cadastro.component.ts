@@ -1,49 +1,46 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MessageService } from 'primeng/api';
+import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-professor-cadastro',
   templateUrl: './professor-cadastro.component.html',
   styleUrls: ['./professor-cadastro.component.css'],
-  providers: [MessageService]
 })
 export class ProfessorCadastroComponent implements OnInit {
   form!: FormGroup;
-  carregando: boolean = false;
-  salvando: boolean = false;
 
   constructor(
     private fb: FormBuilder,
-    private messageService: MessageService
+    private router: Router,
+    private spinner: NgxSpinnerService,
+    private messageService: MessageService // Injeção do MessageService, já provido no CoreModule
   ) {}
 
   ngOnInit(): void {
-    this.carregando = true;
-
-    // Simula carregamento de dados para edição
-    setTimeout(() => {
-      this.form = this.fb.group({
-        nome: ['', Validators.required],
-        cpf: ['', Validators.required]
-      });
-
-      this.carregando = false;
-    }, 1000);
+    this.form = this.fb.group({
+      nome: ['', Validators.required],
+      cpf: ['', Validators.required]
+    });
   }
 
   salvar() {
     if (this.form.invalid) return;
 
-    this.salvando = true;
-    this.carregando = true;
+    this.spinner.show(); // Mostra o spinner ao salvar
 
-    // Simula chamada de API
     setTimeout(() => {
-      this.salvando = false;
-      this.carregando = false;
-      this.messageService.add({ severity: 'success', summary: 'Salvo com sucesso!' });
-      this.form.reset();
+      // Exibe a mensagem de sucesso
+      this.messageService.add({
+        severity: 'success',
+        summary: 'Sucesso',
+        detail: 'Professor salvo com sucesso!'
+      });
+
+      this.spinner.hide(); // Esconde o spinner após salvar
+      this.router.navigate(['/professores']); // Redireciona para a lista de professores
     }, 1500);
   }
 }

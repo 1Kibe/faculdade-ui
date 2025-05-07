@@ -1,28 +1,17 @@
-<p-toast></p-toast>
-
-
 <p-card header="Lista de Professores">
-  <!-- Skeleton enquanto carrega -->
-  <p-skeleton *ngIf="loading" height="2rem" [style]="{ 'margin-bottom': '1rem' }" class="mb-3"></p-skeleton>
-
-  <!-- Botão Novo, só aparece quando terminar de carregar -->
   <div
-    *ngIf="!loading"
     class="flex flex-wrap col-12 justify-content-between align-items-center mb-3"
-    style="margin-bottom: 1rem;">
+    style="margin-bottom: 1rem;"
+  >
     <p-button 
       icon="pi pi-plus" 
       routerLink="novo" 
-      label="Novo" 
-      [style]="{'margin-bottom': '1rem'}"
-      [disabled]="loading" 
+      label="Novo"
       pFocusTrap>
     </p-button>
   </div>
 
-  <!-- Tabela de Professores -->
   <p-table
-    *ngIf="!loading"
     [value]="professores"
     [paginator]="true"
     [rows]="5"
@@ -30,7 +19,6 @@
     [rowsPerPageOptions]="[5, 10, 20]"
     [scrollable]="true"
     scrollHeight="400px"
-    [loading]="loading"
     styleClass="p-datatable-striped"
   >
     <ng-template pTemplate="header">
