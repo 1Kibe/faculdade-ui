@@ -1,5 +1,5 @@
-
 import { Component, OnInit } from '@angular/core';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { DisciplinaService } from '../disciplina.service';
 
 @Component({
@@ -12,7 +12,8 @@ export class DisciplinaListaComponent implements OnInit {
   disciplinas = [];
   
   constructor(
-    private disciplinaService: DisciplinaService
+    private disciplinaService: DisciplinaService,
+    private spinner: NgxSpinnerService
   ) { }
 
   ngOnInit() {
@@ -20,8 +21,10 @@ export class DisciplinaListaComponent implements OnInit {
   }
 
   carregarDisciplinas(){
+    this.spinner.show();
     this.disciplinaService.listar().then((obj) => {
       this.disciplinas = obj;
+      this.spinner.hide();
     });
   }
 

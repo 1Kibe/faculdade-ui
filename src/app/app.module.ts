@@ -8,7 +8,8 @@ import { DisciplinaModule } from './pages/disciplina/disciplina.module';
 import { AlunosModule } from './pages/alunos/alunos.module';
 import { PrimengModule } from './primeng.module';
 import { ProfessorModule } from './pages/professor/professor.module';
-import { MessageService } from 'primeng/api';
+import { CoreModule } from './pages/core/core.module';
+import { NgxSpinnerModule } from "ngx-spinner";
 
 @NgModule({
   declarations: [
@@ -22,10 +23,12 @@ import { MessageService } from 'primeng/api';
     PrimengModule,
     DisciplinaModule,
     AlunosModule,
-    ProfessorModule
+    ProfessorModule,
+    CoreModule,
+    NgxSpinnerModule
   ],
   providers: [
-    MessageService
+
   ],
   bootstrap: [AppComponent]
 })
