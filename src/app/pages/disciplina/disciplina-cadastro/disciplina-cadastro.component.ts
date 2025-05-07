@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MessageService } from 'primeng/api';
-import { Disciplina } from '../../core/models/disciplina.model';
+import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { DisciplinaService } from '../disciplina.service';
+import { Disciplina } from '../../core/models/disciplina.model';
+
 
 @Component({
   selector: 'app-disciplina-cadastro',
@@ -11,25 +13,40 @@ import { DisciplinaService } from '../disciplina.service';
   styleUrls: ['./disciplina-cadastro.component.css']
 })
 export class DisciplinaCadastroComponent implements OnInit {
-   disciplina = new Disciplina();
+  form!: FormGroup;
+
   constructor(
-    private disciplinaService: DisciplinaService,
+    private fb: FormBuilder,
+    private router: Router,
+    private spinner: NgxSpinnerService,
     private messageService: MessageService,
-    private router: Router
-  ) { }
+    private disciplinaService: DisciplinaService
+  ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.form = this.fb.group({
+      descricao: ['', Validators.required]
+    });
   }
 
-  salvar(form: NgForm){
-    console.log(form);
-  }
+  salvar() {
+    if (this.form.invalid) return;
 
-  cadastroDisciplina(form: NgForm){
-    console.log(this.disciplina);
-     this.disciplinaService.adicionar(this.disciplina).then((obj) => {
-      this.messageService.add({severity:'success', summary:'Disciplina', detail:'cadastrado com sucesso!'});
+    this.spinner.show();
+
+    const novaDisciplina: Disciplina = {
+      descricao: this.form.value.descricao
+    };
+
+    this.disciplinaService.adicionar(novaDisciplina).then(() => {
+      this.messageService.add({
+        severity: 'success',
+        summary: 'Disciplina',
+        detail: 'Cadastrada com sucesso!'
+      });
+
+      this.spinner.hide();
       this.router.navigate(['/disciplinas']);
-  })
+    });
   }
 }

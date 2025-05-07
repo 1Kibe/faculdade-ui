@@ -1,46 +1,46 @@
-<p-card header="Lista de Professores">
-  <div
-    class="flex flex-wrap col-12 justify-content-between align-items-center mb-3"
-    style="margin-bottom: 1rem;"
-  >
-    <p-button 
-      icon="pi pi-plus" 
-      routerLink="novo" 
-      label="Novo"
-      pFocusTrap>
-    </p-button>
-  </div>
+  <p-card header="Lista de Professores">
+    <div
+      class="flex flex-wrap col-12 justify-content-between align-items-center mb-3"
+      style="margin-bottom: 1rem;"
+    >
+      <p-button 
+        icon="pi pi-plus" 
+        routerLink="novo" 
+        label="Novo"
+        pFocusTrap>
+      </p-button>
+    </div>
 
-  <p-table
-    [value]="professores"
-    [paginator]="true"
-    [rows]="5"
-    [virtualScroll]="true"
-    [rowsPerPageOptions]="[5, 10, 20]"
-    [scrollable]="true"
-    scrollHeight="400px"
-    styleClass="p-datatable-striped"
-  >
-    <ng-template pTemplate="header">
-      <tr>
-        <th width="150px">Nome</th>
-        <th width="200px">Data Criação</th>
-        <th width="200px">Usuário Criação</th>
-        <th width="200px">Data Alteração</th>
-        <th width="200px">Usuário Alteração</th>
-      </tr>
-    </ng-template>
+    <p-table
+      [value]="professores"
+      [paginator]="true"
+      [rows]="5"
+      [virtualScroll]="true"
+      [rowsPerPageOptions]="[5, 10, 20]"
+      [scrollable]="true"
+      scrollHeight="400px"
+      styleClass="p-datatable-striped"
+    >
+      <ng-template pTemplate="header">
+        <tr>
+          <th width="150px">Nome</th>
+          <th width="200px">Data Criação</th>
+          <th width="200px">Usuário Criação</th>
+          <th width="200px">Data Alteração</th>
+          <th width="200px">Usuário Alteração</th>
+        </tr>
+      </ng-template>
 
-    <ng-template pTemplate="body" let-prof>
-      <tr>
-        <td>{{ prof.nome }}</td>
-        <td>{{ prof.datacriacao | date : 'dd/MM/yyyy' }}</td>
-        <td>{{ prof.usuariocriacao }}</td>
-        <td>{{ prof.dataalteracao | date : 'dd/MM/yyyy' }}</td>
-        <td>{{ prof.usuarioalteracao }}</td>
-      </tr>
-    </ng-template>
-  </p-table>
-</p-card>
+      <ng-template pTemplate="body" let-prof>
+        <tr>
+          <td>{{ prof.nome }}</td>
+          <td>{{ prof.datacriacao | date : 'dd/MM/yyyy' }}</td>
+          <td>{{ prof.usuariocriacao }}</td>
+          <td>{{ prof.dataalteracao | date : 'dd/MM/yyyy' }}</td>
+          <td>{{ prof.usuarioalteracao }}</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </p-card>
 
-<p-scrollTop target="window" [threshold]="300" icon="pi pi-arrow-up"></p-scrollTop>
+  <p-scrollTop target="window" [threshold]="300" icon="pi pi-arrow-up"></p-scrollTop>

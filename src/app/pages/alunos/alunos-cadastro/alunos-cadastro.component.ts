@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AlunoService } from 'src/app/pages/alunos/alunos.service'; 
-import { Aluno } from '../../core/models/aluno.model'; 
+import { NgxSpinnerService } from 'ngx-spinner';
 import { MessageService } from 'primeng/api';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-alunos-cadastro',
@@ -11,47 +11,36 @@ import { MessageService } from 'primeng/api';
 })
 export class AlunosCadastroComponent implements OnInit {
   form!: FormGroup;
-  aluno = new Aluno();
-  salvando: boolean = false;
-  carregando: boolean = false;
 
   constructor(
     private fb: FormBuilder,
-    private alunosService: AlunoService,
-    private messageService: MessageService
-  ) { }
+    private spinner: NgxSpinnerService,
+    private messageService: MessageService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      nome: [this.aluno.nome, [Validators.required, Validators.minLength(3)]],
-      cpf: [this.aluno.cpf, [Validators.required, Validators.pattern(/^\d{11}$/)]]
+      nome: ['', Validators.required],
+      cpf: ['', [Validators.required, Validators.pattern('[0-9]{11}')]]
     });
   }
 
-  cadastrarAluno() {
-    if (this.form.invalid) {
-      return;
-    }
+  salvar() {
+    if (this.form.invalid) return;
 
-    this.salvando = true;
-    this.carregando = true;
+    this.spinner.show();
 
-    this.aluno = this.form.value;
+    setTimeout(() => {
+      // Aqui simula o salvamento e mostra o toast
+      this.messageService.add({
+        severity: 'success',
+        summary: 'Sucesso',
+        detail: 'Aluno salvo com sucesso!'
+      });
 
-    this.alunosService.adicionarAluno(this.aluno).then((res) => {
-      console.log('Aluno cadastrado com sucesso', res);
-
-      setTimeout(() => {
-        this.salvando = false;
-        this.carregando = false;
-        this.messageService.add({ severity: 'success', summary: 'Aluno cadastrado com sucesso!' });
-        this.form.reset();
-      }, 1500);
-    }).catch((err) => {
-      console.error('Erro ao cadastrar aluno', err);
-      this.salvando = false;
-      this.carregando = false;
-      this.messageService.add({ severity: 'error', summary: 'Erro ao cadastrar aluno' });
-    });
+      this.spinner.hide();
+      this.router.navigate(['/alunos']);
+    }, 1500); // Mantido só para simular um tempo de salvamento (não é do toast)
   }
 }

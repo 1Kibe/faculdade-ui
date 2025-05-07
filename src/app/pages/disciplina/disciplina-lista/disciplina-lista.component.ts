@@ -8,24 +8,26 @@ import { DisciplinaService } from '../disciplina.service';
   styleUrls: ['./disciplina-lista.component.css']
 })
 export class DisciplinaListaComponent implements OnInit {
-  
   disciplinas = [];
-  
+  carregando = true;
+
   constructor(
     private disciplinaService: DisciplinaService,
     private spinner: NgxSpinnerService
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.carregarDisciplinas();
   }
 
-  carregarDisciplinas(){
+  carregarDisciplinas() {
     this.spinner.show();
+    this.carregando = true;
+
     this.disciplinaService.listar().then((obj) => {
       this.disciplinas = obj;
+      this.carregando = false;
       this.spinner.hide();
     });
   }
-
 }

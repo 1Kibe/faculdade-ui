@@ -5,6 +5,7 @@ import { PrimengModule } from 'src/app/primeng.module';
 import { DisciplinaCadastroComponent } from './disciplina-cadastro/disciplina-cadastro.component';
 import { DisciplinaListaComponent } from './disciplina-lista/disciplina-lista.component';
 import { DisciplinaRoutingModule } from './disciplina.routing';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -13,7 +14,8 @@ import { DisciplinaRoutingModule } from './disciplina.routing';
     CommonModule,
     FormsModule,
     DisciplinaRoutingModule,
-    PrimengModule
+    PrimengModule,
+    ReactiveFormsModule
   ],
   declarations: [
   DisciplinaCadastroComponent,

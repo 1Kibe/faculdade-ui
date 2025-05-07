@@ -1,22 +1,37 @@
+<p-toast></p-toast>
 
 <p-card header="Cadastro de Disciplina">
-  <div class="flex flex-wrap col-12">
-    <button pButton type="button" class="p-button p-button-raided" 
-    icon="pi pi-caret-left" pTooltip="Voltar" tooltipPosition="top" label="Voltar"
-     routerLink="/disciplinas"></button>
+  <div class="flex flex-wrap col-12 mb-3" style="margin-bottom: 2rem;">
+    <button 
+      pButton 
+      type="button" 
+      class="p-button p-button-raised" 
+      icon="pi pi-caret-left" 
+      pTooltip="Voltar" 
+      tooltipPosition="top" 
+      label="Voltar" 
+      routerLink="/disciplinas">
+    </button>
   </div>
 
-  <form #form="ngForm" autocomplete="off" (ngSubmit)="cadastroDisciplina(form)">
-       <div class="grid">
-        <span class="col-12 -mb-3">Descrição</span>
-        <div class="col-12 md:col-6 lg:col-3">
-          
-          <input pInputText name="descricao" #descricao="ngModel" [(ngModel)]="disciplina.descricao" type="text">
-        </div>
-        <div>
-          <button pButton type="submit" label="Salvar"></button>
-        </div>
-       </div>
-  </form>
+  <form [formGroup]="form" (ngSubmit)="salvar()">
+    <div class="field mb-4" style="margin-bottom: 2rem;">
+      <span class="p-float-label">
+        <input id="descricao" type="text" pInputText formControlName="descricao" />
+        <label for="descricao">Descrição</label>
+      </span>
+    </div>
 
+    <div class="flex justify-content-end" style="margin-bottom: 2rem;">
+      <p-button 
+        label="Salvar" 
+        icon="pi pi-save" 
+        type="submit" 
+        [disabled]="form.invalid" 
+        pFocusTrap>
+      </p-button>
+    </div>
+  </form>
 </p-card>
+
+<p-scrollTop target="window" [threshold]="300" icon="pi pi-arrow-up"></p-scrollTop>
