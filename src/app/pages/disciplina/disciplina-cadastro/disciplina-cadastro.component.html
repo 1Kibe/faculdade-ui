@@ -1,6 +1,6 @@
 <p-toast></p-toast>
 
-<p-card header="Cadastro de Disciplina">
+<p-card header="{{ editando ? 'Edição de' : 'Cadastro de' }} Disciplina">
   <div class="flex flex-wrap col-12 mb-3" style="margin-bottom: 2rem;">
     <button 
       pButton 
@@ -14,22 +14,53 @@
     </button>
   </div>
 
-  <form [formGroup]="form" (ngSubmit)="salvar()">
+  <form #form="ngForm" autocomplete="off" (ngSubmit)="salvar(form)">
+    <!-- Descrição com p-float-label -->
     <div class="field mb-4" style="margin-bottom: 2rem;">
       <span class="p-float-label">
-        <input id="descricao" type="text" pInputText formControlName="descricao" />
+        <input id="descricao" type="text" pInputText name="descricao" [(ngModel)]="disciplina.descricao" 
+          minlength="5" required="true" #descricao="ngModel" />
         <label for="descricao">Descrição</label>
       </span>
+      <app-message [control]="descricao" error="required" text="Informe uma descrição"></app-message>
+      <app-message [control]="descricao" error="minlength" text="Mínimo de {{ descricao.errors?.minlength?.requiredLength }} caracteres"></app-message>
     </div>
 
+    <!-- Status com p-inputSwitch -->
+    <div class="field mb-4" style="margin-bottom: 2rem;">
+      <p-inputSwitch 
+        inputId="status" 
+        formControlName="status" 
+        binary="true"
+        style="margin-right: 8px;">
+      </p-inputSwitch>
+      <label for="status" class="ml-2">Status</label>
+    </div>
+
+    <!-- Botão de Salvar -->
     <div class="flex justify-content-end" style="margin-bottom: 2rem;">
       <p-button 
         label="Salvar" 
         icon="pi pi-save" 
         type="submit" 
-        [disabled]="form.invalid" 
+        [disabled]="form.invalid || salvando" 
         pFocusTrap>
       </p-button>
+    </div>
+
+    <!-- Spinner de carregamento enquanto salvando -->
+    <div *ngIf="salvando" class="grid justify-content-center mt-2">
+      <div class="grid col-12 justify-content-center">
+        <p-progressSpinner 
+          [style]="{ width: '50px', height: '50px' }" 
+          styleClass="custom-spinner" 
+          strokeWidth="5" 
+          animationDuration=".5s">
+        </p-progressSpinner>
+      </div>
+      <div class="grid col-12 justify-content-center">
+        <h6>Salvando, aguarde...</h6>
+      </div>
     </div>
   </form>
 </p-card>

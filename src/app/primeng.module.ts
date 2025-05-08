@@ -3,7 +3,7 @@ import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { TableModule } from 'primeng/table';
 import { CardModule } from 'primeng/card';
-import { DropdownModule } from 'primeng/dropdown'; 
+import { DropdownModule } from 'primeng/dropdown';
 import { CalendarModule } from 'primeng/calendar';
 import { ToastModule } from 'primeng/toast';
 import { MessagesModule } from 'primeng/messages';
@@ -13,7 +13,8 @@ import { SkeletonModule } from 'primeng/skeleton';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { FocusTrapModule } from 'primeng/focustrap';
 import { TooltipModule } from 'primeng/tooltip';
-
+import { InputSwitchModule } from 'primeng/inputswitch';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
 
 @NgModule({
   exports: [
@@ -30,7 +31,9 @@ import { TooltipModule } from 'primeng/tooltip';
     SkeletonModule,
     MultiSelectModule,
     FocusTrapModule,
-    TooltipModule
-  ]
+    TooltipModule,
+    InputSwitchModule,
+    ProgressSpinnerModule,
+  ],
 })
-export class PrimengModule { }
+export class PrimengModule {}

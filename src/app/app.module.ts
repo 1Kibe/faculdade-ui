@@ -10,6 +10,7 @@ import { PrimengModule } from './primeng.module';
 import { ProfessorModule } from './pages/professor/professor.module';
 import { CoreModule } from './pages/core/core.module';
 import { NgxSpinnerModule } from "ngx-spinner";
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { NgxSpinnerModule } from "ngx-spinner";
     AlunosModule,
     ProfessorModule,
     CoreModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    ReactiveFormsModule
   ],
   providers: [
 

@@ -6,6 +6,7 @@ import { DisciplinaCadastroComponent } from './disciplina-cadastro/disciplina-ca
 import { DisciplinaListaComponent } from './disciplina-lista/disciplina-lista.component';
 import { DisciplinaRoutingModule } from './disciplina.routing';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -15,7 +16,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     DisciplinaRoutingModule,
     PrimengModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
   ],
   declarations: [
   DisciplinaCadastroComponent,
