@@ -15,6 +15,8 @@ import { FocusTrapModule } from 'primeng/focustrap';
 import { TooltipModule } from 'primeng/tooltip';
 import { InputSwitchModule } from 'primeng/inputswitch';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { SidebarModule } from 'primeng/sidebar';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
 
 @NgModule({
   exports: [
@@ -34,6 +36,8 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
     TooltipModule,
     InputSwitchModule,
     ProgressSpinnerModule,
+    SidebarModule,
+    OverlayPanelModule
   ],
 })
 export class PrimengModule {}
