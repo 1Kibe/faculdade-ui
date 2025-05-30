@@ -1,7 +1,8 @@
 <p-toast></p-toast>
 
 <p-card header="{{ editando ? 'Edição de' : 'Cadastro de' }} Disciplina">
-  <div class="flex flex-wrap col-12 mb-3" style="margin-bottom: 2rem;">
+  <div class="flex flex-wrap col-12 mb-3
+  justify-content-center" style="margin-bottom: 2rem;">
     <button 
       pButton 
       type="button" 
@@ -15,7 +16,6 @@
   </div>
 
   <form #form="ngForm" autocomplete="off" (ngSubmit)="salvar(form)">
-    <!-- Descrição com p-float-label -->
     <div class="field mb-4" style="margin-bottom: 2rem;">
       <span class="p-float-label">
         <input id="descricao" type="text" pInputText name="descricao" [(ngModel)]="disciplina.descricao" 
@@ -26,7 +26,6 @@
       <app-message [control]="descricao" error="minlength" text="Mínimo de {{ descricao.errors?.minlength?.requiredLength }} caracteres"></app-message>
     </div>
 
-    <!-- Status com p-inputSwitch -->
     <div class="field mb-4" style="margin-bottom: 2rem;">
       <p-inputSwitch 
         inputId="status" 
@@ -37,18 +36,16 @@
       <label for="status" class="ml-2">Status</label>
     </div>
 
-    <!-- Botão de Salvar -->
     <div class="flex justify-content-end" style="margin-bottom: 2rem;">
       <p-button 
         label="Salvar" 
         icon="pi pi-save" 
         type="submit" 
         [disabled]="form.invalid || salvando" 
-        pFocusTrap>
+        class="p-button-lg" pFocusTrap>
       </p-button>
     </div>
 
-    <!-- Spinner de carregamento enquanto salvando -->
     <div *ngIf="salvando" class="grid justify-content-center mt-2">
       <div class="grid col-12 justify-content-center">
         <p-progressSpinner 
