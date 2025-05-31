@@ -1,19 +1,13 @@
-<!-- alunos-lista.component.html -->
-<p-card header="Lista de Alunos">
-  <!-- Botão Novo, só aparece quando terminar de carregar -->
-  <div
+<p-card styleClass="card-adjust my-custom-margin" header="Lista de Alunos"> <div
     *ngIf="!carregando"
-    class="flex flex-wrap col-12 justify-content-between align-items-center mb-3 " style="margin-bottom: 1rem;">
+    class="flex flex-wrap col-12 justify-content-between align-items-center " style="margin-bottom: 1rem;">
     <p-button
       icon="pi pi-plus"
-      routerLink="cadastro"
-      label="Novo"
-      [ngStyle]="{ 'margin-bottom': '1rem' }"
+      routerLink="novo" label="Novo"
       pFocusTrap
     ></p-button>
   </div>
 
-  <!-- Tabela de alunos -->
   <p-table
     *ngIf="!carregando"
     [value]="alunos"
@@ -27,18 +21,31 @@
   >
     <ng-template pTemplate="header">
       <tr>
-        <th width="150px">ID</th>
+        <th></th> <th width="150px">ID</th>
         <th width="300px">Nome</th>
         <th width="200px">CPF</th>
+        <th width="200px">Data Criação</th>
+        <th width="200px">Usuário Criação</th>
+        <th width="200px">Data Alteração</th>
+        <th width="200px">Usuário Alteração</th>
       </tr>
     </ng-template>
 
     <ng-template pTemplate="body" let-aluno>
       <tr>
-        <td>{{ aluno.idaluno }}</td>
-        <td>{{ aluno.nome }}</td>
+        <td> <button pButton type="button" class="p-button-rounded p-button-primary"
+            ptooltip="Editar" icon="pi pi-pencil" tooltipPosition="top"
+            [routerLink]="['/alunos', aluno.id]"> </button>
+        </td>
+        <td>{{ aluno.id }}</td> <td>{{ aluno.nome }}</td>
         <td>{{ aluno.cpf }}</td>
+        <td>{{ aluno.datacriacao | date : 'dd/MM/yyyy' }}</td>
+        <td>{{ aluno.usuariocriacao }}</td>
+        <td>{{ aluno.dataalteracao | date : 'dd/MM/yyyy' }}</td>
+        <td>{{ aluno.usuarioalteracao }}</td>
       </tr>
     </ng-template>
   </p-table>
 </p-card>
+
+<p-scrollTop target="window" [threshold]="300" icon="pi pi-arrow-up"></p-scrollTop>

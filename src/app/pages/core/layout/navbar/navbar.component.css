@@ -55,3 +55,26 @@
   font-weight: 500;
   margin-left: 15px;
 }
+
+.btn-menu {
+  width: 100%;
+  text-align: left;
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+  padding-top: 15px !important;
+  padding-bottom: 15px !important;
+  /* Opcional: border-radius: 0 !important; */
+}
+
+.btn-menu .p-button-label {
+  flex-grow: 1;
+}
+
+.btn-menu.ativo {
+  background-color: #007bff; /* Ou a cor que você usa para o estado ativo */
+  color: white;
+}
+
+.btn-menu:hover {
+  background-color: rgba(0, 123, 255, 0.7) !important;
+}

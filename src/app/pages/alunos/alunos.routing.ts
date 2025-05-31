@@ -8,6 +8,10 @@ const routes: Routes = [
         path: '', 
         component: AlunosListaComponent 
     },
+    {
+        path: 'novo',
+        component: AlunosCadastroComponent
+      },
     {   
         path: 'cadastro', 
         component: AlunosCadastroComponent 
