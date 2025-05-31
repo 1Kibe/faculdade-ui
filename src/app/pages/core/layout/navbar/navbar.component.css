@@ -1,4 +1,4 @@
-/* Seu navbar.component.css (ou o arquivo CSS onde .navbar é definido) */
+/* Onde .navbar.component.css (ou o arquivo CSS onde .navbar é definido) */
 
 .navbar {
   display: flex;
@@ -56,13 +56,20 @@
   margin-left: 15px;
 }
 
+/* ESTILOS PARA OS BOTÕES DO MENU LATERAL (Disciplinas, Professores, Alunos) */
 .btn-menu {
   width: 100%;
   text-align: left;
+  /* AUMENTAR O TAMANHO DA FONTE */
+  font-size: 1.1em; /* Exemplo: aumente para 1.1em, 1.2em ou um valor em px como 16px, 18px */
+
+  /* AJUSTAR O PADDING PARA AUMENTAR O TAMANHO DO BOTÃO */
+  /* Você já tem paddings com !important, ajuste-os aqui */
   padding-left: 20px !important;
   padding-right: 20px !important;
-  padding-top: 15px !important;
-  padding-bottom: 15px !important;
+  padding-top: 18px !important; /* Aumentado de 15px para 18px */
+  padding-bottom: 18px !important; /* Aumentado de 15px para 18px */
+
   /* Opcional: border-radius: 0 !important; */
 }
 
